@@ -1,0 +1,136 @@
+.formCreate {
+	background-color: #181a21;
+	/* background-color: #22394b; */
+	padding: 30px;
+	max-width: 800px;
+	margin: 0 auto;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+.formCreate h2 {
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+.formCreate .inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.formCreate .inputs div {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.formCreate .inputs .flex {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.formCreate .inputs .flex div {
+	flex: 1;
+}
+
+.formCreate .inputs div label {
+	font-size: 0.9rem;
+	font-weight: 300;
+	letter-spacing: normal;
+}
+
+.formCreate .inputs div input,
+.formCreate .inputs div select {
+	width: 100%;
+	padding: 7px;
+	border: none;
+	background-color: #32353c !important;
+	color: #fff;
+}
+
+.formCreate .inputs div input:focus,
+.formCreate .inputs div select:focus,
+.formCreate .inputs div textarea:focus {
+	outline: none;
+}
+
+.formCreate .inputs div input:-webkit-autofill,
+.formCreate .inputs div select:-webkit-autofill {
+	-webkit-text-fill-color: #fff !important;
+	-webkit-box-shadow: 0 0 0 30px #32353c inset !important;
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-transition: background-color 5000s ease-in-out 0s;
+	-moz-transition: background-color 5000s ease-in-out 0s;
+	-ms-transition: background-color 5000s ease-in-out 0s;
+	-o-transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	/* Cambia el color del icono a blanco */
+	filter: invert(1);
+}
+
+.formCreate .inputs div textarea {
+	padding: 10px;
+	border: none;
+	min-height: 200px;
+	max-height: 200px;
+	max-width: 100%;
+	min-width: 100%;
+	background-color: #32353c !important;
+	color: #fff;
+}
+
+.formCreate .inputs button {
+	margin-top: 15px;
+}
+
+.formCreate .inputs .list {
+	min-height: 130px;
+	background-color: #32353c;
+	padding: 15px;
+}
+
+.formCreate .inputs .list ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.formCreate .inputs .list ul li {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background-color: #181a21;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	position: relative;
+	padding: 15px 20px;
+}
+
+.formCreate .inputs .list ul li button {
+	position: absolute;
+	right: -10px;
+	z-index: 999;
+	top: -26px;
+	height: 30px;
+	width: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+}

@@ -1,24 +1,21 @@
 import "./HeaderModules.css";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ exit }) {
 	return (
 		<header>
 			<div className="nav-list">
 				<div className="nav-left">
 					<Link to="/home">
-						<h1>Countries</h1>
+						<h1 className="blue">Videogames</h1>
 					</Link>
 				</div>
 				<div className="nav-right">
 					<Link to="/home">
 						<p>Home</p>
 					</Link>
-					<Link to="/about">
-						<p>About Me</p>
-					</Link>
-					<Link to="../activities">
-						<p>Create Activity</p>
+					<Link to="./create">
+						<p>Create Videogame</p>
 					</Link>
 					<button onClick={exit}>
 						<i

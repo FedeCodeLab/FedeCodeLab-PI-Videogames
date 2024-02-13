@@ -17,17 +17,21 @@ module.exports = (sequelize) => {
 			description: {
 				type: DataTypes.TEXT,
 			},
-			plataforms: {
+			platforms: {
 				type: DataTypes.STRING,
 			},
-			image: {
+			background_image: {
 				type: DataTypes.STRING,
 			},
 			releaseDate: {
-				type: DataTypes.DATE,
+				type: DataTypes.DATEONLY,
 			},
 			rating: {
-				type: DataTypes.ENUM("1", "2", "3", "4", "5"),
+				type: DataTypes.DECIMAL(3, 2),
+				validate: {
+					min: 1,
+					max: 5,
+				},
 			},
 		},
 		{

@@ -5,7 +5,7 @@ const getGenres = async (req, res) => {
 		const allGenres = await Genre.findAll();
 		res.status(200).json(allGenres);
 	} catch (error) {
-		res.status(400).json({ error: error.message });
+		console.error(error.message);
 	}
 };
 

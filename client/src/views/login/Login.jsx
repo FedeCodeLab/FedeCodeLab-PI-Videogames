@@ -1,9 +1,10 @@
 import "./LoginModules.css";
+import Form from "../../components/formLogin/Form";
 
-export default function Login() {
+export default function Login({ login }) {
 	return (
 		<section className="login">
-			<h1>Estas en el Login</h1>
+			<Form login={login} />
 		</section>
 	);
 }
