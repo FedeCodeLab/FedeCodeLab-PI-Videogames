@@ -33,7 +33,7 @@ export default function Home() {
 
 	return (
 		<section className="home">
-			<Filters filterVideogames={filterVideogames} />
+			<Filters setCurrentPage={setCurrentPage} />
 			<ApiCards data={currentItems} />
 			<Pagination
 				totalItems={
@@ -43,6 +43,8 @@ export default function Home() {
 				}
 				itemsPerPage={itemsPerPage}
 				onPageChange={paginate}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
 			/>
 		</section>
 	);

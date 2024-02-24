@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./PaginationModules.css";
 
-export default function Pagination({ totalItems, itemsPerPage, onPageChange }) {
-	const [currentPage, setCurrentPage] = useState(1);
-
+export default function Pagination({
+	totalItems,
+	itemsPerPage,
+	onPageChange,
+	currentPage,
+	setCurrentPage,
+}) {
 	const totalPages = Math.ceil(totalItems / itemsPerPage);
 
 	const handlePageChange = (page) => {

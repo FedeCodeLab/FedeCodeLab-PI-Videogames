@@ -43,6 +43,10 @@
 	letter-spacing: normal;
 }
 
+.formCreate .inputs div select {
+	height: 31px;
+}
+
 .formCreate .inputs div input,
 .formCreate .inputs div select {
 	width: 100%;

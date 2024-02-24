@@ -9,7 +9,7 @@ import {
 	getGamesByName,
 } from "../../redux/actions/actions";
 
-export default function Filters({ filterVideogames }) {
+export default function Filters({ setCurrentPage }) {
 	const dispatch = useDispatch();
 	const [name, setName] = useState("");
 
@@ -24,11 +24,13 @@ export default function Filters({ filterVideogames }) {
 
 		if (name === "orderAlph") {
 			dispatch(sortByAlphabetical(value));
+			setCurrentPage(1);
 		} else if (name === "origin") {
 			dispatch(originVideogames(value));
+			setCurrentPage(1);
 		} else if (name === "genres") {
-			console.log(filterVideogames);
 			dispatch(filterGenres(value));
+			setCurrentPage(1);
 		}
 	};
 
@@ -36,6 +38,7 @@ export default function Filters({ filterVideogames }) {
 
 	const handleClick = () => {
 		dispatch(resetVideogames());
+		setCurrentPage(1);
 	};
 
 	// ?---------------------------------------------------- SEARCH
@@ -43,11 +46,11 @@ export default function Filters({ filterVideogames }) {
 	const search = (e) => {
 		const { value } = e.target;
 		setName(value);
-		console.log(name);
 	};
 
 	const handleSubmit = () => {
 		dispatch(getGamesByName(name));
+		setCurrentPage(1);
 	};
 
 	return (

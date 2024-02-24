@@ -17,7 +17,7 @@ const getVideogameByName = async (req, res) => {
 		} else {
 			res
 				.status(404)
-				.json({ message: "No videogames found with the specified name." });
+				.json({ message: "No se encontró ningún juego con ese nombre" });
 		}
 	} catch (error) {
 		res.status(500).json({ error: error.message });
@@ -25,29 +25,3 @@ const getVideogameByName = async (req, res) => {
 };
 
 module.exports = getVideogameByName;
-
-// const getVideogameByName = async (req, res) => {
-// 	const { name } = req.query;
-// 	try {
-// 		const videoGames = await Videogame.findAll({
-// 			where: {
-// 				name: {
-// 					[Op.iLike]: `%${name}%`,
-// 				},
-// 			},
-// 			include: [{ model: Genre }, { model: Platform }],
-// 		});
-
-// 		if (videoGames.length > 0) {
-// 			res.status(200).json(videoGames);
-// 		} else {
-// 			res
-// 				.status(404)
-// 				.json({ message: "No videogames found with the specified name." });
-// 		}
-// 	} catch (error) {
-// 		res.status(500).json({ error: error.message });
-// 	}
-// };
-
-// module.exports = getVideogameByName;

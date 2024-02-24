@@ -79,3 +79,15 @@ a:hover {
 	width: 90%;
 	margin: 0 auto;
 }
+
+.error {
+	font-size: 0.9rem;
+	width: 100%;
+	margin: 0 auto;
+	padding: 3px;
+	text-align: center;
+	border: 1px solid #a94442;
+	color: #a94442;
+	background-color: #f2dede;
+	margin-bottom: 10px;
+}
