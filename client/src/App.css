@@ -10,7 +10,10 @@
 }
 
 body {
-	background-color: #1a2939;
+	/* background-color: #1a2939; */
+	/* background-color: #1b2838; */
+	background-color: #222;
+
 	font-family: "DM Sans", sans-serif;
 	color: #fff;
 	font-size: 0.9rem;

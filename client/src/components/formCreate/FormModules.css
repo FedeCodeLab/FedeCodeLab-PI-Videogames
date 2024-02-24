@@ -1,6 +1,5 @@
 .formCreate {
 	background-color: #181a21;
-	/* background-color: #22394b; */
 	padding: 30px;
 	max-width: 800px;
 	margin: 0 auto;
@@ -19,7 +18,7 @@
 .formCreate .inputs {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 20px;
 }
 
 .formCreate .inputs div {
@@ -31,7 +30,7 @@
 .formCreate .inputs .flex {
 	display: flex;
 	flex-direction: row;
-	gap: 10px;
+	gap: 15px;
 }
 
 .formCreate .inputs .flex div {
@@ -101,6 +100,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	display: flex;
 	flex-direction: row;
 	gap: 15px;
+	flex-wrap: wrap;
 }
 
 .formCreate .inputs .list ul li {

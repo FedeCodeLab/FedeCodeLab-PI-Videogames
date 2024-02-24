@@ -17,10 +17,10 @@ module.exports = (sequelize) => {
 			description: {
 				type: DataTypes.TEXT,
 			},
-			platforms: {
+			background_image: {
 				type: DataTypes.STRING,
 			},
-			background_image: {
+			background_image_additional: {
 				type: DataTypes.STRING,
 			},
 			releaseDate: {

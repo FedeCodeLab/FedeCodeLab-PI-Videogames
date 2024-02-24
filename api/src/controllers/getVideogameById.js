@@ -7,11 +7,13 @@ const getVideogameById = async (req, res) => {
 			where: { id },
 		});
 		const gameGenre = await game.getGenres();
+		const gamePlatform = await game.getPlatforms();
 		console.log(gameGenre);
 		if (game) {
 			let detailArray = [];
 			detailArray.push(game);
 			detailArray.push(gameGenre);
+			detailArray.push(gamePlatform);
 			res.status(200).json(detailArray);
 		}
 	} catch (error) {

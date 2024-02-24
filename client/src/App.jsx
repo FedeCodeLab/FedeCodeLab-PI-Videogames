@@ -6,6 +6,7 @@ import Login from "./views/login/Login";
 import Header from "./components/header/Header";
 import Create from "./views/create/Create";
 import Detail from "./views/detail/Detail";
+import Footer from "./components/footer/Footer";
 const EMAIL = "f@f.com";
 const PASSWORD = "hola123";
 
@@ -50,6 +51,7 @@ function App() {
 					<Route path="/detail/:id" element={<Detail />} />
 				</Routes>
 			</main>
+			{pathname !== "/" && <Footer />}
 		</div>
 	);
 }

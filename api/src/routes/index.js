@@ -1,19 +1,43 @@
 const { Router } = require("express");
+// ?------------------------------------------------------ Videogames
+
 const postVideogame = require("../controllers/postVideogame");
-const getGenres = require("../controllers/getGenres");
-const getAllGenres = require("../controllers/getAllGenres");
-const getVideogames = require("../controllers/getVideogames");
+const getDbVideogames = require("../controllers/getDbVideogames");
 const getVideogameByName = require("../controllers/getVideogameByName");
 const getVideogameById = require("../controllers/getVideogameById");
+const getAllVideogames = require("../controllers/getAllVideogames");
+const getApiVideogames = require("../controllers/getApiVideogames");
+
+// ?------------------------------------------------------ Genres
+
+const getGenres = require("../controllers/getGenres");
+const getAllGenres = require("../controllers/getAllGenres");
+
+// ?------------------------------------------------------ Platforms
+
+const getPlatforms = require("../controllers/getPlatforms");
+const getAllPlatforms = require("../controllers/getAllPlatforms");
+
+// !------------------------------------------------------ Router ----------------------------------------------------------------
 
 const router = Router();
 
-router.get("/videogames", getVideogames);
+// ?------------------------------------------------------ Videogames
+
+router.get("/apivideogames", getApiVideogames);
+router.get("/dbvideogames", getDbVideogames);
 router.get("/videogames/id/:id", getVideogameById);
 router.get("/videogames/name", getVideogameByName);
-// http://localhost:3001/videogames/name?name=The%20Last%20Of%20Us
+router.get("/videogames", getAllVideogames);
+router.post("/videogames", postVideogame);
+
+// ?------------------------------------------------------ Genres
+
 router.get("/genres", getGenres);
 router.get("/getallgenres", getAllGenres);
-router.post("/videogames", postVideogame);
+// ?------------------------------------------------------ Platforms
+
+router.get("/platforms", getPlatforms);
+router.get("/getallplatforms", getAllPlatforms);
 
 module.exports = router;

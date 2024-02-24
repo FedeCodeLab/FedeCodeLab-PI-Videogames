@@ -7,7 +7,7 @@ export default function Header({ exit }) {
 			<div className="nav-list">
 				<div className="nav-left">
 					<Link to="/home">
-						<h1 className="blue">Videogames</h1>
+						<h1>Videogames</h1>
 					</Link>
 				</div>
 				<div className="nav-right">

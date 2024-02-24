@@ -2,23 +2,28 @@
 	color: #fff;
 	display: flex;
 	flex-direction: column;
+	cursor: pointer;
+	height: 100%;
+	box-shadow: 3px 3px 15px rgba(45, 115, 255, 0.3);
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
-	cursor: pointer;
-	height: 100%;
-	box-shadow: 3px 3px 15px rgba(75, 0, 130, 0.4);
 }
 
 .card:hover {
-	transform: translateY(-10px);
+	transform: translateY(-5px);
+	-webkit-transform: translateY(-5px);
+	-moz-transform: translateY(-5px);
+	-ms-transform: translateY(-5px);
+	-o-transform: translateY(-5px);
 }
 
 .card .card-top {
 	min-height: 220px;
 	max-height: 220px;
+	flex: 1;
 }
 
 .card .card-top img {
@@ -33,42 +38,33 @@
 	z-index: 999;
 }
 
-.card .card-middle {
-	background-color: #191927;
+.card .card-bottom {
+	/* background-color: #191927; */
+	background-image: url("https://store.cloudflare.steamstatic.com/public/images/v6/home/background_spotlight.jpg");
 	text-align: center;
-	padding: 20px 10px;
+	padding: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 13px;
-	flex: 1;
+	flex: 2;
+	border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	-ms-border-radius: 0 0 10px 10px;
+	-o-border-radius: 0 0 10px 10px;
 }
 
-.card .card-middle h1 {
-	font-size: 1.5rem;
-	font-weight: 600;
+.card .card-bottom h3 {
+	font-size: 1.1rem;
+	font-weight: 400;
 	color: #fff;
+	margin-bottom: 10px;
 }
 
-.card .card-middle p {
-	color: #fff;
-}
-
-.continents {
-	background-color: #06aa39;
-	color: #fff;
-	padding: 15px 10px;
-	text-align: center;
-	border-radius: 0px 0px 10px 10px;
-	-webkit-border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	-ms-border-radius: 0px 0px 10px 10px;
-	-o-border-radius: 0px 0px 10px 10px;
-	font-size: 1.3rem;
-}
-
-.continent {
-	color: #06aa39;
-	font-weight: 600;
+.card .card-bottom div {
+	color: #acdbf5;
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }

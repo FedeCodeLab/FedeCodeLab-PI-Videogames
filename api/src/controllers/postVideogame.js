@@ -1,14 +1,15 @@
-const { Videogame, Genre } = require("../db");
+const { Videogame, Genre, Platform } = require("../db");
 
 const postVideogame = async (req, res) => {
 	const {
 		name,
 		description,
-		platforms,
 		background_image,
+		background_image_additional,
 		releaseDate,
 		rating,
 		genres,
+		platforms,
 	} = req.body;
 	console.log(req.body);
 	try {
@@ -16,16 +17,21 @@ const postVideogame = async (req, res) => {
 			where: { name: genres },
 		});
 
+		const foundplatforms = await Platform.findAll({
+			where: { name: platforms },
+		});
+
 		const createGame = await Videogame.create({
 			name,
 			description,
-			platforms,
 			background_image,
+			background_image_additional,
 			releaseDate,
 			rating,
 		});
 
 		await createGame.addGenre(foundgenres);
+		await createGame.addPlatform(foundplatforms);
 
 		res.status(200).json(createGame);
 	} catch (error) {

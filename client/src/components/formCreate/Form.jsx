@@ -1,7 +1,11 @@
 import "./FormModules.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchGenres, postGames } from "../../redux/actions/actions";
+import {
+	fetchGenres,
+	postGames,
+	fetchPlatforms,
+} from "../../redux/actions/actions";
 
 export default function Form() {
 	const dispatch = useDispatch();
@@ -9,26 +13,34 @@ export default function Form() {
 	// ?------------------------------------ useSelector y UseEffect
 
 	const allGenres = useSelector((state) => state.allGenres);
+	const allPlatforms = useSelector((state) => state.allPlatforms);
 
 	useEffect(() => {
 		dispatch(fetchGenres());
+		dispatch(fetchPlatforms());
 	}, [dispatch]);
-	console.log(allGenres);
+
+	// ? ---------------------------------------- Estado de videogame
 
 	const [videogame, setVideogame] = useState({
 		name: "",
 		description: "",
-		platforms: "",
 		background_image: "",
+		background_image_additional: "",
 		releaseDate: "",
 		rating: "",
 		genres: [],
+		platforms: [],
 	});
+
+	// ? ---------------------------------------- onChange
 
 	const onChange = (e) => {
 		const { name, value } = e.target;
 		setVideogame({ ...videogame, [name]: value });
 	};
+
+	// ? ---------------------------------------- onSubmit
 
 	const onSubmit = (e) => {
 		console.log(videogame);
@@ -37,18 +49,30 @@ export default function Form() {
 		setVideogame({
 			name: "",
 			description: "",
-			platforms: "",
 			background_image: "",
+			background_image_additional: "",
 			releaseDate: "",
 			rating: "",
 			genres: [],
+			platforms: [],
 		});
 	};
 
+	// ? ---------------------------------------- onClick
+
 	const onClick = (e) => {
-		const { value } = e.target;
-		setVideogame({ ...videogame, genres: [...videogame.genres, value] });
+		const { value, name } = e.target;
+		if (name === "genres") {
+			setVideogame({ ...videogame, genres: [...videogame.genres, value] });
+		} else {
+			setVideogame({
+				...videogame,
+				platforms: [...videogame.platforms, value],
+			});
+		}
 	};
+
+	// ? ---------------------------------------- Genre
 
 	const deleteGenre = (genre) => {
 		setVideogame({
@@ -56,6 +80,17 @@ export default function Form() {
 			genres: videogame.genres.filter((g) => g !== genre),
 		});
 	};
+
+	// ? ---------------------------------------- Platform
+
+	const deletePlatform = (platform) => {
+		setVideogame({
+			...videogame,
+			platforms: videogame.platforms.filter((g) => g !== platform),
+		});
+	};
+
+	// ?------------------------------------------- Return
 
 	return (
 		<form className="formCreate" onSubmit={onSubmit}>
@@ -72,6 +107,8 @@ export default function Form() {
 					/>
 				</div>
 
+				{/* ----------------------------------- Rating ---------------------------------- */}
+
 				<div className="flex">
 					<div>
 						<label htmlFor="rating">Rating:</label>
@@ -83,8 +120,12 @@ export default function Form() {
 							step="0.01" // Esto permite números decimales
 							value={videogame.rating}
 							onChange={onChange}
+							placeholder="5.00"
 						/>
 					</div>
+
+					{/* ----------------------------------- Fecha ---------------------------------- */}
+
 					<div>
 						<label htmlFor="releaseDate">Fecha de lanzamiento:</label>
 						<input
@@ -96,41 +137,72 @@ export default function Form() {
 					</div>
 				</div>
 
-				<div>
-					<label htmlFor="platforms">Plataformas:</label>
-					<input
-						type="text"
-						name="platforms"
-						value={videogame.platforms}
-						onChange={onChange}
-						placeholder="Tu juego está disponible en..."
-					/>
-				</div>
+				{/* ----------------------------------- Images ---------------------------------- */}
 
-				<div>
-					<label htmlFor="background_image">Imagen:</label>
-					<input
-						type="text"
-						name="background_image"
-						value={videogame.background_image}
-						onChange={onChange}
-						placeholder="Ingrese el link de la imagen"
-					/>
-				</div>
+				<div className="flex">
+					<div>
+						<label htmlFor="background_image">Imagen:</label>
+						<input
+							type="text"
+							name="background_image"
+							value={videogame.background_image}
+							onChange={onChange}
+							placeholder="https://images..."
+						/>
+					</div>
 
-				<div>
-					<label htmlFor="genres">Generos:</label>
-					<div className="flex">
-						<select name="genres" id="genres" value="" onChange={onClick}>
-							<option value="">Seleccione los generos</option>
-							{allGenres.map((genre) => (
-								<option key={genre.id} value={genre.name}>
-									{genre.name}
-								</option>
-							))}
-						</select>
+					<div>
+						<label htmlFor="background_image_additional">
+							Imagen adicional:
+						</label>
+						<input
+							type="text"
+							name="background_image_additional"
+							value={videogame.background_image_additional}
+							onChange={onChange}
+							placeholder="https://images..."
+						/>
 					</div>
 				</div>
+
+				{/* ----------------------------------- Generos y Plataformas  ---------------------------------- */}
+
+				<div className="flex">
+					<div>
+						<label htmlFor="genres">Generos:</label>
+						<div className="flex">
+							<select name="genres" id="genres" value="" onChange={onClick}>
+								<option value="">Seleccione los generos</option>
+								{allGenres.map((genre) => (
+									<option key={genre.id} value={genre.name}>
+										{genre.name}
+									</option>
+								))}
+							</select>
+						</div>
+					</div>
+
+					<div>
+						<label htmlFor="platforms">Plataformas:</label>
+						<div className="flex">
+							<select
+								name="platforms"
+								id="platforms"
+								value=""
+								onChange={onClick}
+							>
+								<option value="">Seleccione las plataformas</option>
+								{allPlatforms.map((platform) => (
+									<option key={platform.id} value={platform.name}>
+										{platform.name}
+									</option>
+								))}
+							</select>
+						</div>
+					</div>
+				</div>
+
+				{/* ----------------------------------- List ---------------------------------- */}
 
 				<div className="list">
 					<ul>
@@ -142,8 +214,18 @@ export default function Form() {
 								</button>
 							</li>
 						))}
+						{videogame.platforms.map((platform, index) => (
+							<li key={index}>
+								{platform}
+								<button type="button" onClick={() => deletePlatform(platform)}>
+									x
+								</button>
+							</li>
+						))}
 					</ul>
 				</div>
+
+				{/* ----------------------------------- Description ---------------------------------- */}
 
 				<div>
 					<label htmlFor="description">Descripción:</label>
