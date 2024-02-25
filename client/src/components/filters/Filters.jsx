@@ -8,6 +8,7 @@ import {
 	filterGenres,
 	getGamesByName,
 } from "../../redux/actions/actions";
+import "./Filters.css";
 
 export default function Filters({ setCurrentPage }) {
 	const dispatch = useDispatch();
@@ -55,57 +56,57 @@ export default function Filters({ setCurrentPage }) {
 
 	return (
 		<div className="filters container">
-			{/* -------------------------------- Order Alphabetically ------------------------------------ */}
+			<div className="filter-left">
+				{/* -------------------------------- Order Alphabetically ------------------------------------ */}
 
-			<select
-				name="orderAlph"
-				id="order"
-				onChange={handleChange}
-				defaultValue="placeholder"
-			>
-				<option value="placeholder" disabled>
-					Sort Alphabetically
-				</option>
-				<option value="Asc">Ascendente</option>
-				<option value="Desc">Descendente</option>
-			</select>
-
-			{/* -------------------------------- Origin ------------------------------------ */}
-
-			<select
-				name="origin"
-				id="order"
-				onChange={handleChange}
-				defaultValue="placeholder"
-			>
-				<option value="placeholder" disabled>
-					Origin
-				</option>
-				<option value="Db">Database</option>
-				<option value="Api">API</option>
-			</select>
-
-			{/* -------------------------------- Genres ------------------------------------ */}
-
-			<select name="genres" id="genres" onChange={handleChange}>
-				<option value="">Seleccione los generos</option>
-				{allGenres.map((genre) => (
-					<option key={genre.id} value={genre.name}>
-						{genre.name}
+				<select
+					name="orderAlph"
+					id="order"
+					onChange={handleChange}
+					defaultValue="placeholder"
+				>
+					<option value="placeholder" disabled>
+						Ordenar Alfabéticamente
 					</option>
-				))}
-			</select>
+					<option value="Asc">Ascendente</option>
+					<option value="Desc">Descendente</option>
+				</select>
 
-			{/* -------------------------------- SearchBar ------------------------------------ */}
+				{/* -------------------------------- Origin ------------------------------------ */}
+
+				<select
+					name="origin"
+					id="order"
+					onChange={handleChange}
+					defaultValue="placeholder"
+				>
+					<option value="placeholder" disabled>
+						Origen
+					</option>
+					<option value="Db">Database</option>
+					<option value="Api">API</option>
+				</select>
+
+				{/* -------------------------------- Genres ------------------------------------ */}
+
+				<select name="genres" id="genres" onChange={handleChange}>
+					<option value="">Seleccione los generos</option>
+					{allGenres.map((genre) => (
+						<option key={genre.id} value={genre.name}>
+							{genre.name}
+						</option>
+					))}
+				</select>
+
+				{/* -------------------------------- Reset ------------------------------------ */}
+
+				<button onClick={handleClick}>Reset</button>
+			</div>
 
 			<div className="searchBar">
 				<input type="search" onChange={search} placeholder="The Last of..." />
 				<button onClick={handleSubmit}>Buscar</button>
 			</div>
-
-			{/* -------------------------------- Reset ------------------------------------ */}
-
-			<button onClick={handleClick}>Reset</button>
 		</div>
 	);
 }

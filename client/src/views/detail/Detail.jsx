@@ -57,13 +57,14 @@ const Detail = () => {
 		<section className="detail">
 			{Object.keys(gameDb).length > 0 ? (
 				<div className="detailContainer">
+					<div className="image">
+						{gameDb.background_image && (
+							<img src={gameDb.background_image} alt="image" />
+						)}
+					</div>
 					{gameDb.name && <h1>{gameDb.name}</h1>}
-					{gameDb.background_image && (
-						<img src={gameDb.background_image} alt="image" />
-					)}
 
 					<div className="detailGame container">
-						<span>Descripción: </span>
 						{gameDb.description && <p>{gameDb.description}</p>}
 
 						<div className="data">
@@ -92,7 +93,7 @@ const Detail = () => {
 
 								{platforms.length > 0 && (
 									<div className="detailGenres">
-										<h3 className="blue">Plataformas:</h3>
+										<p className="blue">Plataformas:</p>
 										<ul>
 											{platforms.map((platform, index) => (
 												<li key={index}>{platform.name}</li>
@@ -103,7 +104,7 @@ const Detail = () => {
 
 								{genres.length > 0 && (
 									<div className="detailGenres">
-										<h3 className="blue">Generos:</h3>
+										<p className="blue">Generos:</p>
 										<ul>
 											{genres.map((genre, index) => (
 												<li key={index}>{genre.name}</li>
@@ -122,10 +123,12 @@ const Detail = () => {
 				</div>
 			) : Object.keys(gameApi).length > 0 ? (
 				<div className="detailContainer">
+					<div className="image">
+						{gameApi.background_image && (
+							<img src={gameApi.background_image} alt="image" />
+						)}
+					</div>
 					{gameApi.name && <h1>{gameApi.name}</h1>}
-					{gameApi.background_image && (
-						<img src={gameApi.background_image} alt="image" />
-					)}
 					<div className="detailGame container">
 						{gameApi.description && <p>{gameApi.description}</p>}
 
@@ -158,7 +161,7 @@ const Detail = () => {
 								)}
 								{gameApi.platforms && (
 									<div className="platforms">
-										<h3 className="blue">Plataformas:</h3>
+										<p className="blue">Plataformas:</p>
 										<ul>
 											{gameApi.platforms.map((platform, index) => (
 												<li key={index}>{platform.platform.name}</li>
@@ -168,7 +171,7 @@ const Detail = () => {
 								)}
 								{gameApi.genres && (
 									<div className="genres">
-										<h3 className="blue">Generos: </h3>
+										<p className="blue">Generos: </p>
 										<ul>
 											{gameApi.genres.map((g, index) => (
 												<li key={index}>{g.name}</li>
@@ -186,7 +189,9 @@ const Detail = () => {
 					</div>
 				</div>
 			) : (
-				<p>Cargando</p>
+				<div className="loader">
+					<div class="custom-loader"></div>
+				</div>
 			)}
 		</section>
 	);

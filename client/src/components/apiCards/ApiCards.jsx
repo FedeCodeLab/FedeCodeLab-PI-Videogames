@@ -9,7 +9,6 @@ export default function ApiCards({ data }) {
 
 	return (
 		<section className="container">
-			<h1>Juegos:</h1>
 			<div className="cards">
 				{data.map(
 					({ id, name, image, background_image, rating, genres, Genres }) => (

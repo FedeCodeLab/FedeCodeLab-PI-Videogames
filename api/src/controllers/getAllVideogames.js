@@ -1,5 +1,7 @@
 const https = require("https");
 const { Videogame, Genre, Platform } = require("../db");
+require("dotenv").config();
+const { API_KEY } = process.env;
 
 const getAllVideogames = async (req, res) => {
 	try {
@@ -12,7 +14,7 @@ const getAllVideogames = async (req, res) => {
 			return new Promise((resolve, reject) => {
 				https
 					.get(
-						`https://api.rawg.io/api/games?key=7e004c896a9847c2a84c6821d02da5c1&page=${page}&page_size=${pageSize}`,
+						`https://api.rawg.io/api/games?key=${API_KEY}&page=${page}&page_size=${pageSize}`,
 						(response) => {
 							let data = "";
 

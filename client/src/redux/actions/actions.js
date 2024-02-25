@@ -8,6 +8,7 @@ import {
 	FETCH_DB_GAMES,
 	FILTER_GENRES,
 	GET_NAME,
+	TOGGLE_SIDEBAR,
 } from "./types";
 import axios from "axios";
 
@@ -162,6 +163,15 @@ export const getGamesByName = (name) => {
 		} catch (error) {
 			alert(error.message);
 		}
+	};
+};
+
+// ?---------------------------------------------- Toggle
+
+export const toggleSidebar = (left) => {
+	return {
+		type: TOGGLE_SIDEBAR,
+		payload: left,
 	};
 };
 

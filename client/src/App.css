@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -10,10 +14,7 @@
 }
 
 body {
-	/* background-color: #1a2939; */
-	/* background-color: #1b2838; */
-	background-color: #222;
-
+	background-color: #131417;
 	font-family: "DM Sans", sans-serif;
 	color: #fff;
 	font-size: 0.9rem;
@@ -90,4 +91,11 @@ a:hover {
 	color: #a94442;
 	background-color: #f2dede;
 	margin-bottom: 10px;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
 }

@@ -1,0 +1,40 @@
+.header-mobile {
+	display: none;
+	background-color: #1e1f26;
+	width: 100%;
+	position: sticky;
+	top: 0;
+	left: -100%;
+	z-index: 100;
+	padding: 25px 0;
+}
+
+.header-mobile .nav-left i {
+	font-size: 1.1rem;
+	cursor: pointer;
+}
+
+.header-mobile i:hover {
+	color: #1999ff;
+}
+
+.header-mobile .flex-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-mobile .flex-row .nav-center h2 {
+	color: #fff;
+	font-weight: 400;
+}
+
+.header-mobile .flex-row .nav-center h2:hover {
+	color: #1999ff;
+}
+
+@media screen and (max-width: 720px) {
+	.header-mobile {
+		display: block;
+	}
+}

@@ -4,7 +4,7 @@
 	flex-direction: column;
 	cursor: pointer;
 	height: 100%;
-	box-shadow: 3px 3px 15px rgba(45, 115, 255, 0.3);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -29,42 +29,44 @@
 .card .card-top img {
 	width: 100%;
 	height: 100%;
-	border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	-moz-border-radius: 10px 10px 0 0;
-	-ms-border-radius: 10px 10px 0 0;
-	-o-border-radius: 10px 10px 0 0;
+	border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-ms-border-radius: 5px 5px 0 0;
+	-o-border-radius: 5px 5px 0 0;
 	object-fit: cover;
 	z-index: 999;
 }
 
 .card .card-bottom {
-	/* background-color: #191927; */
-	background-image: url("https://store.cloudflare.steamstatic.com/public/images/v6/home/background_spotlight.jpg");
-	text-align: center;
-	padding: 50px;
+	background-color: #1e1f26;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	flex: 2;
-	border-radius: 0 0 10px 10px;
-	-webkit-border-radius: 0 0 10px 10px;
-	-moz-border-radius: 0 0 10px 10px;
-	-ms-border-radius: 0 0 10px 10px;
-	-o-border-radius: 0 0 10px 10px;
+	min-height: 150px;
+	border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-ms-border-radius: 0 0 5px 5px;
+	-o-border-radius: 0 0 5px 5px;
 }
 
 .card .card-bottom h3 {
-	font-size: 1.1rem;
-	font-weight: 400;
+	font-size: 1.2rem;
+	font-weight: 600;
 	color: #fff;
 	margin-bottom: 10px;
 }
 
 .card .card-bottom div {
-	color: #acdbf5;
+	color: #eaebee;
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
+	font-weight: 300;
+}
+
+.card .card-bottom div p span {
+	font-weight: 500;
+	padding-right: 3px;
 }

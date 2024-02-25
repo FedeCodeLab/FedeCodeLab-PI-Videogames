@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./PaginationModules.css";
+import { smoothScrollToTop } from "../../functions/SmoothScroll";
 
 export default function Pagination({
 	totalItems,
@@ -13,6 +14,7 @@ export default function Pagination({
 	const handlePageChange = (page) => {
 		setCurrentPage(page);
 		onPageChange(page);
+		smoothScrollToTop();
 	};
 
 	const handlePrevPage = () => {

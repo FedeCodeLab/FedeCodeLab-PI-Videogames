@@ -7,6 +7,8 @@ import Header from "./components/header/Header";
 import Create from "./views/create/Create";
 import Detail from "./views/detail/Detail";
 import Footer from "./components/footer/Footer";
+import HeaderMobile from "./components/headerMobile/HeaderMobile.jsx";
+import SideBar from "./components/sideBar/sideBar";
 const EMAIL = "f@f.com";
 const PASSWORD = "hola123";
 
@@ -43,6 +45,8 @@ function App() {
 	return (
 		<div className="App">
 			{pathname !== "/" && <Header exit={exit} />}
+			{pathname !== "/" && <HeaderMobile exit={exit} />}
+			{pathname !== "/" && <SideBar exit={exit} />}
 			<main>
 				<Routes>
 					<Route path="/" element={<Login login={login} />} />

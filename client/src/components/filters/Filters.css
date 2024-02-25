@@ -1,0 +1,76 @@
+.filters {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+/* ------ Filter Left ------ */
+
+.filters .filter-left {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+/* ------ Filter Right ------ */
+
+.filters .searchBar {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+.filters .searchBar input {
+	padding: 10px;
+}
+
+/* ------ Filter Left and Right ------ */
+
+.filters .searchBar input,
+.filters .filter-left select {
+	height: 35px;
+	border: none;
+	background-color: #252830;
+	color: #fff;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+
+.filters .filter-left select {
+	padding: 5px;
+}
+
+.filters .searchBar input:focus,
+.filters .filter-left select:focus {
+	outline: none;
+}
+
+@media screen and (max-width: 900px) {
+	.filters {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.searchBar {
+		order: -1; /* Colocar el searchBar antes en el orden visual */
+	}
+
+	.filters .searchBar input {
+		width: 100%;
+	}
+
+	.filters .filter-left {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.filters select,
+	.filters .filter-left button {
+		width: 100%;
+	}
+}

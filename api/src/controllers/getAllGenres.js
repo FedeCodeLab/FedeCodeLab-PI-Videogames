@@ -1,10 +1,10 @@
 const { Genre } = require("../db");
+require("dotenv").config();
+const { API_KEY } = process.env;
 
 const getAllGenres = async (req, res) => {
 	try {
-		const api = await fetch(
-			"https://api.rawg.io/api/genres?key=7e004c896a9847c2a84c6821d02da5c1"
-		);
+		const api = await fetch(`https://api.rawg.io/api/genres?key=${API_KEY}`);
 		const data = await api.json();
 		const map = data.results.map((m) => ({
 			name: m.name,

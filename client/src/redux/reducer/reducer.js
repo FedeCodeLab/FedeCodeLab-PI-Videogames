@@ -8,6 +8,7 @@ import {
 	FILTER_GENRES,
 	RESET,
 	GET_NAME,
+	TOGGLE_SIDEBAR,
 } from "../actions/types";
 
 const initialState = {
@@ -15,6 +16,9 @@ const initialState = {
 	allGenres: [],
 	allPlatforms: [],
 	filterVideogames: [],
+	sidebar: {
+		isVisible: false,
+	},
 };
 
 export default function reducer(state = initialState, action) {
@@ -132,6 +136,17 @@ export default function reducer(state = initialState, action) {
 			return {
 				...state,
 				filterVideogames: [],
+			};
+
+		// ? ---------------------------------------------------- Togle
+
+		case TOGGLE_SIDEBAR:
+			return {
+				...state,
+				sidebar: {
+					...state.sidebar,
+					isVisible: !state.sidebar.isVisible,
+				},
 			};
 
 		// ! --------------------------------------------- Default ---------------------------------------------
