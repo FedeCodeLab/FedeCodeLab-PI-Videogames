@@ -16,7 +16,6 @@ export default function Home() {
 	useEffect(() => {
 		dispatch(fetchVideogames());
 	}, [dispatch]);
-	console.log(allVideogames);
 
 	// Paginación
 	const [currentPage, setCurrentPage] = useState(1);

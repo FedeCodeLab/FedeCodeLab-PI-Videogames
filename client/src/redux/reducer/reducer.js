@@ -15,7 +15,7 @@ const initialState = {
 	allVideogames: [],
 	allGenres: [],
 	allPlatforms: [],
-	filterVideogames: [],
+	filterVideogames: [], // Mantener los juegos filtrados
 	sidebar: {
 		isVisible: false,
 	},

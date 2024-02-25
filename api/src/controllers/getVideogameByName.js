@@ -1,23 +1,24 @@
 const { Op } = require("sequelize");
 const { Videogame, Genre, Platform } = require("../db");
+const getAllVideogames = require("./getAllVideogames"); // Importa el controlador getAllVideogames
+require("dotenv").config();
+const { API_KEY } = process.env;
 
 const getVideogameByName = async (req, res) => {
 	const { name } = req.query;
 	try {
-		const videogames = await Videogame.findAll({
-			where: {
-				name: {
-					[Op.iLike]: `%${name}%`,
-				},
-			},
-			include: [Genre, Platform],
+		// Obtener todos los videojuegos
+		const allVideogames = await getAllVideogames(req, res);
+
+		// Filtrar los videojuegos por nombre
+		const filteredVideogames = allVideogames.filter((videogame) => {
+			return videogame.name.toLowerCase().includes(name.toLowerCase());
 		});
-		if (videogames.length > 0) {
-			res.status(200).json(videogames);
+
+		if (filteredVideogames.length > 0) {
+			res.status(200).json(filteredVideogames);
 		} else {
-			res
-				.status(404)
-				.json({ message: "No se encontró ningún juego con ese nombre" });
+			res.status(400).json({ message: "No se encontró ningún juego" });
 		}
 	} catch (error) {
 		res.status(500).json({ error: error.message });
