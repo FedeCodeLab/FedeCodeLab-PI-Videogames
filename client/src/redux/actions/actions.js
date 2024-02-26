@@ -3,7 +3,7 @@ import {
 	FETCH_GENRES,
 	POST_GAMES,
 	FETCH_PLATFORMS,
-	SORT_ALPHABETICAL,
+	SORT,
 	RESET,
 	FETCH_DB_GAMES,
 	FILTER_GENRES,
@@ -89,11 +89,11 @@ export function postGames(payload) {
 
 // ! --------------------------------------------- Filters ---------------------------------------------
 
-// ? --------------------------------------------- Sort by alphabetical
+// ? --------------------------------------------- Sort
 
-export function sortByAlphabetical(order) {
+export function sort(order) {
 	return {
-		type: SORT_ALPHABETICAL,
+		type: SORT,
 		payload: order,
 	};
 }

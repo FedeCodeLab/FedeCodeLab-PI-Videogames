@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-	sortByAlphabetical,
+	sort,
 	originVideogames,
 	resetVideogames,
 	fetchGenres,
@@ -24,7 +24,7 @@ export default function Filters({ setCurrentPage }) {
 		let { name, value } = e.target;
 
 		if (name === "orderAlph") {
-			dispatch(sortByAlphabetical(value));
+			dispatch(sort(value));
 			setCurrentPage(1);
 		} else if (name === "origin") {
 			dispatch(originVideogames(value));
@@ -66,10 +66,12 @@ export default function Filters({ setCurrentPage }) {
 					defaultValue="placeholder"
 				>
 					<option value="placeholder" disabled>
-						Ordenar Alfabéticamente
+						Ordenar
 					</option>
-					<option value="Asc">Ascendente</option>
-					<option value="Desc">Descendente</option>
+					<option value="Asc">Nombres Asc</option>
+					<option value="Desc">Nombres Desc</option>
+					<option value="higRating">Rating más alto</option>
+					<option value="lowrating">Rating más bajo</option>
 				</select>
 
 				{/* -------------------------------- Origin ------------------------------------ */}

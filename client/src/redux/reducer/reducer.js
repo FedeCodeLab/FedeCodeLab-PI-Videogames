@@ -3,7 +3,7 @@ import {
 	FETCH_GENRES,
 	POST_GAMES,
 	FETCH_PLATFORMS,
-	SORT_ALPHABETICAL,
+	SORT,
 	FETCH_DB_GAMES,
 	FILTER_GENRES,
 	RESET,
@@ -65,7 +65,7 @@ export default function reducer(state = initialState, action) {
 
 		// ? --------------------------------------------------- SORT_ALPHABETICAL
 
-		case SORT_ALPHABETICAL:
+		case SORT:
 			let orderedGames = [...state.allVideogames];
 
 			switch (action.payload) {
@@ -74,6 +74,12 @@ export default function reducer(state = initialState, action) {
 					break;
 				case "Desc":
 					orderedGames.sort((a, b) => b.name.localeCompare(a.name));
+					break;
+				case "lowrating":
+					orderedGames.sort((a, b) => a.rating - b.rating);
+					break;
+				case "higRating":
+					orderedGames.sort((a, b) => b.rating - a.rating);
 					break;
 				default:
 					break;
