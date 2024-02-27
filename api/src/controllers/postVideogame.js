@@ -6,7 +6,7 @@ const postVideogame = async (req, res) => {
 		description,
 		background_image,
 		background_image_additional,
-		releaseDate,
+		release_date,
 		rating,
 		genres,
 		platforms,
@@ -26,7 +26,7 @@ const postVideogame = async (req, res) => {
 			description,
 			background_image,
 			background_image_additional,
-			releaseDate,
+			release_date,
 			rating,
 		});
 

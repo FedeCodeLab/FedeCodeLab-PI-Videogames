@@ -12,15 +12,15 @@ export default function Header({ exit }) {
 				</div>
 				<div className="nav-right">
 					<Link to="/home" className="flex">
-						<span class="material-symbols-outlined">home</span>
+						<span className="material-symbols-outlined">home</span>
 						<p>Inicio</p>
 					</Link>
 					<Link to="./create" className="flex">
-						<span class="material-symbols-outlined">add_circle</span>
+						<span className="material-symbols-outlined">add_circle</span>
 						<p>Crear Videojuego</p>
 					</Link>
 					<button onClick={exit} className="flex">
-						<span class="material-symbols-outlined">logout</span>
+						<span className="material-symbols-outlined">logout</span>
 						<p>Cerrar sesión</p>
 					</button>
 				</div>

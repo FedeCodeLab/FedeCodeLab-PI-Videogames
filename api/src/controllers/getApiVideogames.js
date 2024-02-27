@@ -1,8 +1,6 @@
-const https = require("https");
+const axios = require("axios");
 require("dotenv").config();
 const { API_KEY } = process.env;
-
-const axios = require("axios");
 
 const getApiVideogames = async (req, res) => {
 	try {

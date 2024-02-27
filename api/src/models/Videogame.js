@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
 			background_image_additional: {
 				type: DataTypes.STRING,
 			},
-			releaseDate: {
+			release_date: {
 				type: DataTypes.DATEONLY,
 			},
 			rating: {

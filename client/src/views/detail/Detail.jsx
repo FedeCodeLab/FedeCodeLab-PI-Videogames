@@ -4,176 +4,91 @@ import "./DetailModules.css";
 import { Link } from "react-router-dom";
 
 const Detail = () => {
-	const [gameDb, setGameDb] = useState({});
-	const [gameApi, setGameApi] = useState({});
-	const [genres, setGenres] = useState([]);
-	const [platforms, setPlatforms] = useState([]);
+	const [game, setGame] = useState({});
 	let { id } = useParams();
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/videogames/id/${id}`)
-			.then((res) => {
-				if (res.ok) {
-					return res.json();
-				} else {
-					throw new Error("Local server request failed");
-				}
-			})
-			.then((data) => {
-				if (data) {
-					setGameDb(data[0]);
-					setGenres(data[1]);
-					setPlatforms(data[2]);
-					console.log(data);
-				}
-			})
-			.catch((err) => {
-				fetch(
-					`https://api.rawg.io/api/games/${id}?key=7e004c896a9847c2a84c6821d02da5c1`
-				)
-					.then((res) => {
-						if (res.ok) {
-							return res.json();
-						} else {
-							throw new Error("API request failed");
-						}
-					})
-					.then((data) => {
-						if (data) {
-							setGameApi(data);
-							setGenres(data.genres);
-							setPlatforms(data.platforms);
-						} else {
-							throw new Error(
-								"No se encontró un juego con ese id en la API de RAWG"
-							);
-						}
-					})
-					.catch((err) => console.error(err));
-			});
-	}, [id]);
+		fetch(`http://localhost:3001/videogames/idapi/${id}`)
+			.then((response) => response.json())
+			.then((data) => setGame(data));
+	}, []);
+	console.log(game);
 
 	return (
 		<section className="detail">
-			{Object.keys(gameDb).length > 0 ? (
+			{Object.keys(game).length > 0 ? (
 				<div className="detailContainer">
 					<div className="image">
-						{gameDb.background_image && (
-							<img src={gameDb.background_image} alt="image" />
+						{game.background_image && (
+							<img src={game.background_image} alt="image" />
 						)}
 					</div>
-					{gameDb.name && <h1>{gameDb.name}</h1>}
+					{game.name && <h1>{game.name}</h1>}
 
 					<div className="detailGame container">
-						{gameDb.description && <p>{gameDb.description}</p>}
+						{game.description && <p>{game.description}</p>}
 
 						<div className="data">
 							<div className="left">
 								<h2>Información detallada:</h2>
-								{gameDb.releaseDate && (
+								{game.releaseDate && (
 									<p>
 										<span className="blue">Fecha de lanzamiento: </span>
-										{gameDb.releaseDate}
+										{game.releaseDate}
 									</p>
 								)}
 
-								{gameDb.rating && (
+								{game.rating && (
 									<p>
 										<span className="blue">Rating: </span>
-										{gameDb.rating}⭐
+										{game.rating}⭐
 									</p>
 								)}
 
-								{gameDb.id && (
+								{game.id && (
 									<p>
 										<span className="blue">Id: </span>
-										{gameDb.id}
+										{game.id}
 									</p>
 								)}
 
-								{platforms.length > 0 && (
-									<div className="detailGenres">
-										<p className="blue">Plataformas:</p>
-										<ul>
-											{platforms.map((platform, index) => (
-												<li key={index}>{platform.name}</li>
-											))}
-										</ul>
-									</div>
-								)}
-
-								{genres.length > 0 && (
-									<div className="detailGenres">
-										<p className="blue">Generos:</p>
-										<ul>
-											{genres.map((genre, index) => (
-												<li key={index}>{genre.name}</li>
-											))}
-										</ul>
-									</div>
-								)}
-							</div>
-							<div className="right">
-								{gameDb.background_image_additional && (
-									<img src={gameDb.background_image_additional} alt="image" />
-								)}
-							</div>
-						</div>
-					</div>
-				</div>
-			) : Object.keys(gameApi).length > 0 ? (
-				<div className="detailContainer">
-					<div className="image">
-						{gameApi.background_image && (
-							<img src={gameApi.background_image} alt="image" />
-						)}
-					</div>
-					{gameApi.name && <h1>{gameApi.name}</h1>}
-					<div className="detailGame container">
-						{gameApi.description && <p>{gameApi.description}</p>}
-
-						<div className="data">
-							<div className="left">
-								<h2>Información detallada:</h2>
-								{gameApi.website && (
-									<Link target="_blank" to={gameApi.website}>
-										<span className="blue">Website: </span>
-										{gameApi.website}
-									</Link>
-								)}
-								{gameApi.released && (
-									<p>
-										<span className="blue">Fecha de Lanzamiento: </span>
-										{gameApi.released}
-									</p>
-								)}
-								{gameApi.rating && (
-									<p>
-										<span className="blue">Rating: </span>
-										{gameApi.rating}⭐
-									</p>
-								)}
-								{gameApi.id && (
-									<p>
-										<span className="blue">Id: </span>
-										{gameApi.id}
-									</p>
-								)}
-								{gameApi.platforms && (
+								{game.platforms && (
 									<div className="platforms">
 										<p className="blue">Plataformas:</p>
 										<ul>
-											{gameApi.platforms.map((platform, index) => (
-												<li key={index}>{platform.platform.name}</li>
+											{game.platforms.map((p, index) => (
+												<li key={index}>{p}</li>
 											))}
 										</ul>
 									</div>
 								)}
-								{gameApi.genres && (
+								{game.genres && (
 									<div className="genres">
 										<p className="blue">Generos: </p>
 										<ul>
-											{gameApi.genres.map((g, index) => (
+											{game.genres.map((g, index) => (
+												<li key={index}>{g.name}</li>
+											))}
+										</ul>
+									</div>
+								)}
+
+								{game.Platforms && (
+									<div className="platforms">
+										<p className="blue">Plataformas:</p>
+										<ul>
+											{game.Platforms.map((p, index) => (
+												<li key={index}>{p.name}</li>
+											))}
+										</ul>
+									</div>
+								)}
+
+								{game.Genres && (
+									<div className="Genres">
+										<p className="blue">Generos: </p>
+										<ul>
+											{game.Genres.map((g, index) => (
 												<li key={index}>{g.name}</li>
 											))}
 										</ul>
@@ -181,8 +96,8 @@ const Detail = () => {
 								)}
 							</div>
 							<div className="right">
-								{gameApi.background_image_additional && (
-									<img src={gameApi.background_image_additional} alt="image" />
+								{game.background_image_additional && (
+									<img src={game.background_image_additional} alt="image" />
 								)}
 							</div>
 						</div>
@@ -190,7 +105,7 @@ const Detail = () => {
 				</div>
 			) : (
 				<div className="loader">
-					<div class="custom-loader"></div>
+					<div className="custom-loader"></div>
 				</div>
 			)}
 		</section>
