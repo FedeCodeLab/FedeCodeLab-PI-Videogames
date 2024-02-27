@@ -8,7 +8,7 @@ const Detail = () => {
 	let { id } = useParams();
 
 	useEffect(() => {
-		fetch(`http://localhost:3001/videogames/idapi/${id}`)
+		fetch(`http://localhost:3001/videogames/id/${id}`)
 			.then((response) => response.json())
 			.then((data) => setGame(data));
 	}, []);

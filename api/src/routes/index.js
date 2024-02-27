@@ -4,10 +4,9 @@ const { Router } = require("express");
 const postVideogame = require("../controllers/postVideogame");
 const getDbVideogames = require("../controllers/getDbVideogames");
 const getVideogameByName = require("../controllers/getVideogameByName");
-const getVideogameById = require("../controllers/getVideogameById");
 const getAllVideogames = require("../controllers/getAllVideogames");
 const getApiVideogames = require("../controllers/getApiVideogames");
-const getVideogameByIdAPI = require("../controllers/getApiVideogamesByIdAPI");
+const getVideogameById = require("../controllers/getVideogameById");
 
 // ?------------------------------------------------------ Genres
 
@@ -28,7 +27,6 @@ const router = Router();
 router.get("/apivideogames", getApiVideogames);
 router.get("/dbvideogames", getDbVideogames);
 router.get("/videogames/id/:id", getVideogameById);
-router.get("/videogames/idapi/:id", getVideogameByIdAPI);
 router.get("/videogames/name", getVideogameByName);
 router.get("/videogames", getAllVideogames);
 router.post("/videogames", postVideogame);
